@@ -3,7 +3,6 @@
   const total = slides.length;
   let current = 0;
 
-  // DOM refs
   const progressFill = document.getElementById('progressFill');
   const slideCounter = document.getElementById('slideCounter');
   const prevBtn = document.getElementById('prevBtn');
@@ -29,7 +28,6 @@
 
   const pad = (n) => String(n).padStart(2, '0');
 
-  // Build pagination dots & overview cards
   slides.forEach((slide, idx) => {
     const dot = document.createElement('button');
     dot.type = 'button';
@@ -87,7 +85,6 @@
   nextBtn.addEventListener('click', next);
   restartBtn?.addEventListener('click', () => goTo(0));
 
-  // Initial slide from hash
   const hashMatch = location.hash.match(/^#slide-(\d+)$/);
   if (hashMatch) {
     goTo(parseInt(hashMatch[1], 10) - 1, false);
@@ -99,7 +96,7 @@
     if (m) goTo(parseInt(m[1], 10) - 1, false);
   });
 
-  // Notes toggle
+  // Notes drawer
   function toggleNotes(force) {
     const open = typeof force === 'boolean' ? force : !notesDrawer.classList.contains('is-open');
     notesDrawer.classList.toggle('is-open', open);
@@ -145,7 +142,7 @@
   }
   themeBtn.addEventListener('click', toggleTheme);
 
-  // Fullscreen toggle
+  // Fullscreen
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen?.().catch(() => {});
@@ -155,15 +152,13 @@
   }
   fullscreenBtn.addEventListener('click', toggleFullscreen);
 
-  // 20-minute presenter countdown timer (click start/pause, dblclick reset)
+  // 20-minute presenter countdown timer
   let remainingSec = 20 * 60;
   let timerHandle = null;
   function renderTimer() {
     const neg = remainingSec < 0;
     const abs = Math.abs(remainingSec);
-    const mm = pad(Math.floor(abs / 60));
-    const ss = pad(abs % 60);
-    timerDisplay.textContent = `${neg ? '-' : ''}${mm}:${ss}`;
+    timerDisplay.textContent = `${neg ? '-' : ''}${pad(Math.floor(abs / 60))}:${pad(abs % 60)}`;
     timerBtn.classList.toggle('is-overtime', neg);
   }
   timerBtn.addEventListener('click', () => {
@@ -189,7 +184,7 @@
     renderTimer();
   });
 
-  // Keyboard controls
+  // Keyboard shortcuts
   window.addEventListener('keydown', (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const key = e.key;
@@ -228,7 +223,7 @@
     }
   });
 
-  // Touch swipe navigation
+  // Touch swipe
   let touchX = 0;
   window.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
   window.addEventListener('touchend', (e) => {
@@ -236,121 +231,30 @@
     if (Math.abs(dx) > 55) dx < 0 ? next() : prev();
   }, { passive: true });
 
-  // ==================== Interactive 1: Slide 4 Profile Switcher ====================
-  const profiles = {
-    web: {
-      name: 'web',
-      loop: '@deepseek-ai/dsh-agent-loop',
-      loopCm: '# 标准多轮执行循环',
-      sandbox: '@deepseek-ai/dsh-sandbox-local',
-      sandboxCm: '# 本机 Shell / 文件实现',
-      extra: '@deepseek-ai/dsh-web-ui',
-      extraCm: '# Web 工作台 + Creator',
-      topName: 'Web UI + Creator Mode',
-      topPkg: 'dsh-web-ui',
-      midName: '本地文件系统 & Shell Provider',
-      midPkg: 'dsh-sandbox-local',
-      loopName: '标准多轮 Agent Loop',
-      loopPkg: 'dsh-agent-loop',
-    },
-    headless: {
-      name: 'sdk-minimal',
-      loop: '@deepseek-ai/dsh-agent-loop',
-      loopCm: '# 标准多轮执行循环',
-      sandbox: '@deepseek-ai/dsh-sandbox-docker',
-      sandboxCm: '# Docker 隔离执行环境',
-      extra: '@deepseek-ai/dsh-rpc-stdio',
-      extraCm: '# 无头 stdio JSON-RPC 网关',
-      topName: '无头 JSON-RPC 网关（嵌入 CI / SDK）',
-      topPkg: 'dsh-rpc-stdio',
-      midName: 'Docker 隔离沙箱 Provider',
-      midPkg: 'dsh-sandbox-docker',
-      loopName: '标准多轮 Agent Loop',
-      loopPkg: 'dsh-agent-loop',
-    },
-    team: {
-      name: 'corp-agent',
-      loop: '@deepseek-ai/dsh-loop-ptc',
-      loopCm: '# PTC 代码批量调用循环',
-      sandbox: '@corp/dsh-k8s-sandbox',
-      sandboxCm: '# 内网 K8s 隔离沙箱',
-      extra: '@corp/dsh-plugin-bundle',
-      extraCm: '# 团队自研审批/脱敏/工具集',
-      topName: '团队自研插件集（审批 + 脱敏 + 业务工具）',
-      topPkg: '@corp/dsh-plugin-bundle',
-      midName: '内网 K8s 沙箱 Provider',
-      midPkg: '@corp/dsh-k8s-sandbox',
-      loopName: 'PTC 代码批量调用 Loop',
-      loopPkg: 'dsh-loop-ptc',
-    },
+  // ==================== Interactive 1: Slide 5 Usage Modes ====================
+  const modeMap = {
+    web: { svg: 'modeSvgWeb', code: 'modeCodeWeb' },
+    headless: { svg: 'modeSvgHeadless', code: 'modeCodeHeadless' },
+    sdk: { svg: 'modeSvgSdk', code: 'modeCodeSdk' },
   };
-
-  document.querySelectorAll('[data-profile]').forEach((btn) => {
+  document.querySelectorAll('[data-mode]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const p = profiles[btn.dataset.profile];
-      if (!p) return;
-      document.querySelectorAll('[data-profile]').forEach((b) => {
+      const m = btn.dataset.mode;
+      if (!modeMap[m]) return;
+      document.querySelectorAll('[data-mode]').forEach((b) => {
         const active = b === btn;
         b.classList.toggle('is-active', active);
         b.setAttribute('aria-selected', String(active));
       });
-      document.getElementById('yamlProfileName').textContent = p.name;
-      document.getElementById('yamlLoopPkg').textContent = p.loop.padEnd(31, ' ');
-      document.getElementById('yamlLoopCm').textContent = p.loopCm;
-      document.getElementById('yamlSandboxPkg').textContent = p.sandbox.padEnd(31, ' ');
-      document.getElementById('yamlSandboxCm').textContent = p.sandboxCm;
-      document.getElementById('yamlExtraPkg').textContent = p.extra.padEnd(31, ' ');
-      document.getElementById('yamlExtraCm').textContent = p.extraCm;
-      document.getElementById('layerTopName').textContent = p.topName;
-      document.getElementById('layerTopPkg').textContent = p.topPkg;
-      document.getElementById('layerMidName').textContent = p.midName;
-      document.getElementById('layerMidPkg').textContent = p.midPkg;
-      document.getElementById('layerLoopName').textContent = p.loopName;
-      document.getElementById('layerLoopPkg').textContent = p.loopPkg;
-    });
-  });
-
-  // ==================== Interactive 2: Slide 6 Three-Role Seam ====================
-  const wireLocal = document.getElementById('wireLocal');
-  const wireSandbox = document.getElementById('wireSandbox');
-  const nodeLocal = document.getElementById('nodeLocal');
-  const nodeSandbox = document.getElementById('nodeSandbox');
-  const seamStatus = document.getElementById('seamStatus');
-
-  document.querySelectorAll('[data-seam]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const mode = btn.dataset.seam;
-      document.querySelectorAll('[data-seam]').forEach((b) => {
-        const active = b === btn;
-        b.classList.toggle('is-active', active);
-        b.setAttribute('aria-selected', String(active));
+      Object.entries(modeMap).forEach(([k, ids]) => {
+        const show = k === m;
+        document.getElementById(ids.svg)?.classList.toggle('is-hidden', !show);
+        document.getElementById(ids.code)?.classList.toggle('is-hidden', !show);
       });
-      const isLocal = mode === 'local';
-      wireLocal.setAttribute('stroke', isLocal ? 'var(--emerald)' : 'var(--border-strong)');
-      wireLocal.setAttribute('stroke-width', isLocal ? '2.6' : '1.6');
-      wireLocal.setAttribute('stroke-dasharray', isLocal ? '' : '5 4');
-
-      wireSandbox.setAttribute('stroke', !isLocal ? 'var(--emerald)' : 'var(--border-strong)');
-      wireSandbox.setAttribute('stroke-width', !isLocal ? '2.6' : '1.6');
-      wireSandbox.setAttribute('stroke-dasharray', !isLocal ? '' : '5 4');
-
-      nodeLocal.setAttribute('opacity', isLocal ? '1' : '0.45');
-      nodeLocal.querySelector('rect').setAttribute('stroke', isLocal ? 'var(--emerald)' : 'var(--border-strong)');
-      nodeLocal.querySelector('text').textContent = isLocal ? '2a. PROVIDER · ACTIVE' : '2a. PROVIDER · STANDBY';
-      nodeLocal.querySelector('text').setAttribute('fill', isLocal ? 'var(--emerald)' : 'var(--ink-muted)');
-
-      nodeSandbox.setAttribute('opacity', !isLocal ? '1' : '0.45');
-      nodeSandbox.querySelector('rect').setAttribute('stroke', !isLocal ? 'var(--emerald)' : 'var(--border-strong)');
-      nodeSandbox.querySelector('text').textContent = !isLocal ? '2b. PROVIDER · ACTIVE' : '2b. PROVIDER · STANDBY';
-      nodeSandbox.querySelector('text').setAttribute('fill', !isLocal ? 'var(--emerald)' : 'var(--ink-muted)');
-
-      seamStatus.innerHTML = isLocal
-        ? '当前激活：<code class="mono-inline">dsh-bash-local</code> — 命令在本机运行；切换至 <code class="mono-inline">dsh-bash-sandbox</code> 时，左侧 <code class="mono-inline">dsh-tool-bash</code> 零修改。'
-        : '当前激活：<code class="mono-inline">dsh-bash-sandbox</code> — 命令已切入远程 Docker 沙箱；左侧 <code class="mono-inline">dsh-tool-bash</code> 与 LLM Schema 全程零修改！';
     });
   });
 
-  // ==================== Interactive 3: Slide 8 Session Log View ====================
+  // ==================== Interactive 2: Slide 8 Session Log View ====================
   const svgCompact = document.getElementById('svgCompact');
   const svgFork = document.getElementById('svgFork');
   document.querySelectorAll('[data-logview]').forEach((btn) => {
@@ -363,23 +267,6 @@
       });
       svgCompact.classList.toggle('is-hidden', v !== 'compact');
       svgFork.classList.toggle('is-hidden', v !== 'fork');
-    });
-  });
-
-  // ==================== Interactive 4: Slide 9 Flow Highlight ====================
-  const flowSvg = document.getElementById('flowSvg');
-  const flowGroups = Array.from(flowSvg.querySelectorAll('.flow-group'));
-  document.querySelectorAll('[data-flow]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.flow;
-      document.querySelectorAll('[data-flow]').forEach((b) => b.classList.toggle('is-active', b === btn));
-      if (target === 'all') {
-        flowSvg.classList.remove('is-filtering');
-        flowGroups.forEach((g) => g.classList.remove('is-highlighted'));
-      } else {
-        flowSvg.classList.add('is-filtering');
-        flowGroups.forEach((g) => g.classList.toggle('is-highlighted', g.dataset.group === target));
-      }
     });
   });
 })();
