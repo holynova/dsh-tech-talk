@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232552E0'/%3E%3Cpath d='M9 11h14M9 16h10M9 21h14' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='16' r='2.5' fill='%23F59E0B'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <div class="progress-track" aria-hidden="true">
@@ -338,10 +338,10 @@
               <pre class="code-body"><code><span class="tok-cm"># 按顺序叠加 bundles，决定当前实例的能力边界</span>
 <span class="tok-kw">profile</span>: <span class="tok-str" id="yamlProfileName">web</span>
 <span class="tok-kw">bundles</span>:
-  - <span class="tok-str">@deepseek-ai/dsh-base</span>          <span class="tok-cm"># Session / Model / Approval</span>
-  - <span class="tok-str" id="yamlLoopPkg">@deepseek-ai/dsh-agent-loop</span>    <span class="tok-cm" id="yamlLoopCm"># 标准多轮执行循环</span>
-  - <span class="tok-str" id="yamlSandboxPkg">@deepseek-ai/dsh-sandbox-local</span> <span class="tok-cm" id="yamlSandboxCm"># 本机 Shell / 文件实现</span>
-  - <span class="tok-str" id="yamlExtraPkg">@deepseek-ai/dsh-web-ui</span>        <span class="tok-cm" id="yamlExtraCm"># Web 工作台 + Creator</span></code></pre>
+  - <span class="tok-str">@deepseek-ai/dsh-base</span>           <span class="tok-cm"># Session / Model / Approval</span>
+  - <span class="tok-str" id="yamlLoopPkg">@deepseek-ai/dsh-agent-loop    </span> <span class="tok-cm" id="yamlLoopCm"># 标准多轮执行循环</span>
+  - <span class="tok-str" id="yamlSandboxPkg">@deepseek-ai/dsh-sandbox-local </span> <span class="tok-cm" id="yamlSandboxCm"># 本机 Shell / 文件实现</span>
+  - <span class="tok-str" id="yamlExtraPkg">@deepseek-ai/dsh-web-ui        </span> <span class="tok-cm" id="yamlExtraCm"># Web 工作台 + Creator</span></code></pre>
             </div>
 
             <div class="code-window compact">
@@ -886,32 +886,26 @@
           <div class="code-window">
             <div class="code-header">
               <span class="code-file">index.ts</span>
-              <span class="code-lang">TypeScript · 18 Lines</span>
+              <span class="code-lang">TypeScript · 16 Lines</span>
             </div>
-            <pre class="code-body"><code><span class="tok-kw">import type</span> { Context } <span class="tok-kw">from</span> <span class="tok-str">'@deepseek-ai/cordis'</span>
+            <pre class="code-body code-snug"><code><span class="tok-kw">import type</span> { Context } <span class="tok-kw">from</span> <span class="tok-str">'@deepseek-ai/cordis'</span>
 <span class="tok-kw">import</span> Schema <span class="tok-kw">from</span> <span class="tok-str">'@deepseek-ai/schemastery'</span>
 <span class="tok-kw">import</span> { defineTool } <span class="tok-kw">from</span> <span class="tok-str">'@deepseek-ai/dsh-tools'</span>
 
 <span class="tok-kw">export const</span> name = <span class="tok-str">'metrics-inspector'</span>
 <span class="tok-kw">export const</span> <span class="tok-fn">inject</span> = [<span class="tok-str">'tools'</span>, <span class="tok-str">'approval'</span>]
-
-<span class="tok-kw">export interface</span> Config {
-  endpoint: <span class="tok-kw">string</span>
-  strictMode: <span class="tok-kw">boolean</span>
-}
+<span class="tok-kw">export interface</span> Config { endpoint: <span class="tok-kw">string</span>; strict: <span class="tok-kw">boolean</span> }
 
 <span class="tok-kw">export const</span> Config = Schema.<span class="tok-fn">object</span>({
   endpoint: Schema.<span class="tok-fn">string</span>().<span class="tok-fn">required</span>(),
-  strictMode: Schema.<span class="tok-fn">boolean</span>().<span class="tok-fn">default</span>(<span class="tok-kw">true</span>),
+  strict: Schema.<span class="tok-fn">boolean</span>().<span class="tok-fn">default</span>(<span class="tok-kw">true</span>),
 })
 
-<span class="tok-kw">export function</span> <span class="tok-fn">apply</span>(ctx: Context, config: Config) {
+<span class="tok-kw">export function</span> <span class="tok-fn">apply</span>(ctx: Context, cfg: Config) {
   ctx.tools.<span class="tok-fn">register</span>(<span class="tok-fn">defineTool</span>({
-    name: <span class="tok-str">'query_service_metrics'</span>,
-    parameters: Schema.<span class="tok-fn">object</span>({ service: Schema.<span class="tok-fn">string</span>() }),
-    <span class="tok-kw">async</span> <span class="tok-fn">execute</span>({ service }) {
-      <span class="tok-kw">return</span> <span class="tok-fn">fetchMetrics</span>(config.endpoint, service)
-    },
+    name: <span class="tok-str">'query_metrics'</span>,
+    parameters: Schema.<span class="tok-fn">object</span>({ svc: Schema.<span class="tok-fn">string</span>() }),
+    execute: ({ svc }) =&gt; <span class="tok-fn">fetchMetrics</span>(cfg.endpoint, svc),
   }))
 }</code></pre>
           </div>
@@ -1024,6 +1018,6 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

@@ -295,11 +295,11 @@
         b.setAttribute('aria-selected', String(active));
       });
       document.getElementById('yamlProfileName').textContent = p.name;
-      document.getElementById('yamlLoopPkg').textContent = p.loop;
+      document.getElementById('yamlLoopPkg').textContent = p.loop.padEnd(31, ' ');
       document.getElementById('yamlLoopCm').textContent = p.loopCm;
-      document.getElementById('yamlSandboxPkg').textContent = p.sandbox;
+      document.getElementById('yamlSandboxPkg').textContent = p.sandbox.padEnd(31, ' ');
       document.getElementById('yamlSandboxCm').textContent = p.sandboxCm;
-      document.getElementById('yamlExtraPkg').textContent = p.extra;
+      document.getElementById('yamlExtraPkg').textContent = p.extra.padEnd(31, ' ');
       document.getElementById('yamlExtraCm').textContent = p.extraCm;
       document.getElementById('layerTopName').textContent = p.topName;
       document.getElementById('layerTopPkg').textContent = p.topPkg;
