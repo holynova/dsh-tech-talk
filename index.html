@@ -544,7 +544,8 @@
               </div>
               <pre class="code-body"><code><span class="tok-kw">from</span> dsh <span class="tok-kw">import</span> DSHClient
 
-client = <span class="tok-fn">DSHClient</span>(<span class="tok-str">"http://127.0.0.1:3080"</span>)  <span class="tok-cm"># 或托管 stdio 子进程</span>
+<span class="tok-cm"># 连接本地 dsh 服务，或托管 stdio 子进程</span>
+client = <span class="tok-fn">DSHClient</span>(<span class="tok-str">"http://127.0.0.1:3080"</span>)
 session = client.<span class="tok-fn">create_session</span>()
 <span class="tok-kw">for</span> event <span class="tok-kw">in</span> session.<span class="tok-fn">send</span>(<span class="tok-str">"总结这个仓库的核心模块"</span>):
     <span class="tok-fn">print</span>(event)</code></pre>
@@ -640,17 +641,17 @@ session = client.<span class="tok-fn">create_session</span>()
         <div class="seam-ribbon">
           <div class="seam-chip">
             <span class="chip-role">Consumer 消费层</span>
-            <code>dsh-tool-fs</code>（模型文件工具 · <strong>零改动</strong>）
+            <div><code>dsh-tool-fs</code> · 模型工具<strong>零改动</strong></div>
           </div>
           <span class="seam-arrow">→ 依赖 →</span>
           <div class="seam-chip is-def">
             <span class="chip-role">Definition 接口契约</span>
-            <code>@deepseek-ai/dsh-fs</code>（定义 <code>ctx.fs</code>）
+            <div><code>@deepseek-ai/dsh-fs</code> · 定义 <code>ctx.fs</code></div>
           </div>
           <span class="seam-arrow">← 实现 ←</span>
           <div class="seam-chip is-prov">
             <span class="chip-role">Provider 可替换实现</span>
-            <code>dsh-fs-local</code> ⇄ <strong>你的重写插件</strong>
+            <div><code>dsh-fs-local</code> ⇄ <strong>你的重写插件</strong></div>
           </div>
         </div>
 
