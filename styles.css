@@ -102,11 +102,12 @@ html, body {
 }
 
 p code, li code, dd code, .seam-status code {
-  font-size: 0.88em;
-  padding: 0.1em 0.42em;
+  font-size: 0.86em;
+  padding: 0.08em 0.4em;
   border-radius: 5px;
   background: var(--accent-soft);
   color: var(--accent);
+  white-space: nowrap;
 }
 
 /* Top Progress */
@@ -353,6 +354,9 @@ html[data-theme="dark"] .icon-moon { display: none; }
 }
 .split-2.wide-left {
   grid-template-columns: 1.22fr 0.78fr;
+}
+.split-2.balanced-wide {
+  grid-template-columns: 1.12fr 0.88fr;
 }
 
 .content-col {

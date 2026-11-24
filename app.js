@@ -240,8 +240,12 @@
   const profiles = {
     web: {
       name: 'web',
+      loop: '@deepseek-ai/dsh-agent-loop',
+      loopCm: '# 标准多轮执行循环',
       sandbox: '@deepseek-ai/dsh-sandbox-local',
+      sandboxCm: '# 本机 Shell / 文件实现',
       extra: '@deepseek-ai/dsh-web-ui',
+      extraCm: '# Web 工作台 + Creator',
       topName: 'Web UI + Creator Mode',
       topPkg: 'dsh-web-ui',
       midName: '本地文件系统 & Shell Provider',
@@ -251,8 +255,12 @@
     },
     headless: {
       name: 'sdk-minimal',
+      loop: '@deepseek-ai/dsh-agent-loop',
+      loopCm: '# 标准多轮执行循环',
       sandbox: '@deepseek-ai/dsh-sandbox-docker',
+      sandboxCm: '# Docker 隔离执行环境',
       extra: '@deepseek-ai/dsh-rpc-stdio',
+      extraCm: '# 无头 stdio JSON-RPC 网关',
       topName: '无头 JSON-RPC 网关（嵌入 CI / SDK）',
       topPkg: 'dsh-rpc-stdio',
       midName: 'Docker 隔离沙箱 Provider',
@@ -262,8 +270,12 @@
     },
     team: {
       name: 'corp-agent',
+      loop: '@deepseek-ai/dsh-loop-ptc',
+      loopCm: '# PTC 代码批量调用循环',
       sandbox: '@corp/dsh-k8s-sandbox',
+      sandboxCm: '# 内网 K8s 隔离沙箱',
       extra: '@corp/dsh-plugin-bundle',
+      extraCm: '# 团队自研审批/脱敏/工具集',
       topName: '团队自研插件集（审批 + 脱敏 + 业务工具）',
       topPkg: '@corp/dsh-plugin-bundle',
       midName: '内网 K8s 沙箱 Provider',
@@ -283,8 +295,12 @@
         b.setAttribute('aria-selected', String(active));
       });
       document.getElementById('yamlProfileName').textContent = p.name;
+      document.getElementById('yamlLoopPkg').textContent = p.loop;
+      document.getElementById('yamlLoopCm').textContent = p.loopCm;
       document.getElementById('yamlSandboxPkg').textContent = p.sandbox;
+      document.getElementById('yamlSandboxCm').textContent = p.sandboxCm;
       document.getElementById('yamlExtraPkg').textContent = p.extra;
+      document.getElementById('yamlExtraCm').textContent = p.extraCm;
       document.getElementById('layerTopName').textContent = p.topName;
       document.getElementById('layerTopPkg').textContent = p.topPkg;
       document.getElementById('layerMidName').textContent = p.midName;
