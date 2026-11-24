@@ -397,9 +397,8 @@ html[data-theme="dark"] .icon-moon { display: none; }
   gap: 0.92rem;
 }
 .bullet-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.78rem;
+  position: relative;
+  padding-left: 1.22rem;
   font-size: 1.14rem;
   line-height: 1.5;
   color: var(--ink);
@@ -418,12 +417,13 @@ html[data-theme="dark"] .icon-moon { display: none; }
   font-size: 1.04rem;
 }
 .bullet-dot {
+  position: absolute;
+  left: 0;
+  top: 0.56em;
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 2px;
   background: var(--accent);
-  margin-top: 0.56em;
-  flex-shrink: 0;
 }
 
 .horizontal-bullets {
