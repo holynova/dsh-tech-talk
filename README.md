@@ -1,16 +1,24 @@
 # DeepSeek Harness (`dsh`) 技术分享演示文稿 (v2)
 
-面向程序员同事的 **DeepSeek Harness (`dsh`)** 20 分钟精简版分享网页（衔接 20 分钟自研插件 Demo）。
+面向程序员同事的 **DeepSeek Harness (`dsh`)** 20 分钟精简版分享网页（共 13 页，衔接 20 分钟自研插件 Demo）。
 
 ## 在线预览
 
 - **v2 精简版（主地址）**：https://holynova.github.io/dsh-tech-talk/
 - **v1 原版归档**：https://holynova.github.io/dsh-tech-talk/v1.html
 
-## v2 核心改动
+## 核心页面结构（13 页，前后零孤立概念）
 
-- 新增 **Profile `cordis.patch.yml` 补丁文件与叠加流程** 专页
-- 新增 **Web / Headless / SDK 三种使用方式** 交互图文专页
-- **原理一**：聚焦 Cordis 依赖注入（DI）与 `ctx.effect` 自动清理，去掉事件监听示例
-- **原理二**：以内置服务 `@deepseek-ai/dsh-fs` 为例，直接对比系统 `Definition` 与自定义重写 `Provider`
-- 移除双平面隔离页，并将核心全流程简化为一眼看懂的 **4 步闭环图**
+1. 封面：微内核底盘总览
+2. 为什么需要 Harness？（发动机 vs 底盘 + 3 个痛点）
+3. 核心理念：万物皆插件（对比表）
+4. Profile 与 `cordis.patch.yml` 补丁叠加过程
+5. 三种使用方式：Web · Headless · SDK（交互图文）
+6. 原理一：Cordis 依赖注入（DI）+ `effect` 自动清理
+7. 原理二：内置 `dsh-fs` Definition 与重写示例
+8. 原理三：Session Log 为唯一真相 + 影子压缩 / Fork
+9. 原理三（续）：说人话讲懂 Projection 动态投影（银行流水 → 3 种视图）
+10. 核心全流程：4 步看懂一条指令怎么跑完
+11. 进阶玩法：PTC 模式（让模型写代码批量调工具）
+12. 落到代码：16 行极简插件骨架
+13. 转场：切入 20 分钟真实插件 Demo

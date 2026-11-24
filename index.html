@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232552E0'/%3E%3Cpath d='M9 11h14M9 16h10M9 21h14' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='16' r='2.5' fill='%23F59E0B'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
   <div class="progress-track" aria-hidden="true">
@@ -81,15 +81,15 @@
 
   <main class="deck-viewport" id="deckViewport" aria-live="polite">
     <!-- ==================== SLIDE 1: COVER ==================== -->
-    <section class="slide is-active" data-slide="1" data-title="封面：DeepSeek Harness (dsh)" data-time="00:00 · 1 min" data-note="开场：今天共 40 分钟，前 20 分钟用说人话的方式讲透 dsh 的概念、用法、三大原理和核心流程；后 20 分钟直接切屏看我写的几个插件 Demo。">
+    <section class="slide is-active" data-slide="1" data-title="封面：DeepSeek Harness (dsh)" data-time="00:00 · 1 min" data-note="开场：今天共 40 分钟，前 20 分钟用说人话的方式讲透 dsh 的概念、用法、三大原理、执行流程和 PTC 模式；后 20 分钟直接切屏看我写的几个插件 Demo。">
       <div class="slide-inner cover-grid">
         <div class="cover-copy">
           <h1 class="display-title">DeepSeek Harness <span class="accent-code">dsh</span></h1>
           <p class="cover-lead">把 Agent 从“改不动的精装房”，变成“连核心都能热插拔”的模块化底盘。</p>
           <ul class="bullet-list cover-agenda">
-            <li><span class="bullet-dot"></span><strong>核心概念与用法</strong>：万物皆插件 · Profile Patch · Web / Headless / SDK</li>
-            <li><span class="bullet-dot"></span><strong>三大底层原理</strong>：依赖注入与回收 · 服务重写（Seam） · 事件日志与压缩</li>
-            <li><span class="bullet-dot"></span><strong>极简执行流程</strong>：4 步看懂一条指令怎么跑完</li>
+            <li><span class="bullet-dot"></span><strong>概念与用法</strong>：万物皆插件 · Profile Patch · Web / Headless / SDK</li>
+            <li><span class="bullet-dot"></span><strong>三大原理</strong>：DI 与 <code>effect</code> · <code>dsh-fs</code> 重写 · Session Log 与 Projection</li>
+            <li><span class="bullet-dot"></span><strong>执行流程与进阶</strong>：4 步闭环主流程 · PTC 代码批量调工具</li>
             <li><span class="bullet-dot"></span><strong>16 行插件骨架</strong> → 衔接 20 分钟自研插件 Demo</li>
           </ul>
           <div class="cover-meta">
@@ -126,12 +126,12 @@
             <circle cx="260" cy="220" r="66" fill="var(--accent)" />
             <circle cx="260" cy="220" r="57" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.2" />
             <text x="260" y="212" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700">Cordis</text>
-            <text x="260" y="234" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-family="Noto Sans SC, sans-serif" font-size="12">插件微内核容器</text>
+            <text x="260" y="234" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-family="Noto Sans SC, sans-serif" font-size="12">DI 与热插拔微内核</text>
 
             <g transform="translate(174, 42)">
               <rect width="172" height="54" rx="10" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.8" />
               <text x="86" y="24" text-anchor="middle" fill="var(--ink)" font-size="13.5" font-weight="700">Agent Loop</text>
-              <text x="86" y="42" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">ReAct / PTC / Custom</text>
+              <text x="86" y="42" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">Standard / PTC 模式</text>
             </g>
 
             <g transform="translate(356, 118)">
@@ -142,20 +142,20 @@
 
             <g transform="translate(356, 270)">
               <rect width="148" height="54" rx="10" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.5" />
-              <text x="74" y="24" text-anchor="middle" fill="var(--ink)" font-size="13.5" font-weight="700">文件与沙箱</text>
-              <text x="74" y="42" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">dsh-fs / dsh-shell</text>
+              <text x="74" y="24" text-anchor="middle" fill="var(--ink)" font-size="13.5" font-weight="700">可重写服务</text>
+              <text x="74" y="42" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">dsh-fs (Seam)</text>
             </g>
 
-            <g transform="translate(158, 344)">
-              <rect width="204" height="54" rx="10" fill="var(--surface)" stroke="var(--emerald)" stroke-width="1.8" />
-              <text x="102" y="24" text-anchor="middle" fill="var(--ink)" font-size="13.5" font-weight="700">Session Log</text>
-              <text x="102" y="42" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">Event Log · Fork · Compact</text>
+            <g transform="translate(154, 344)">
+              <rect width="212" height="54" rx="10" fill="var(--surface)" stroke="var(--emerald)" stroke-width="1.8" />
+              <text x="106" y="24" text-anchor="middle" fill="var(--ink)" font-size="13.5" font-weight="700">Session Log</text>
+              <text x="106" y="42" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">Log · Projection · Fork</text>
             </g>
 
             <g transform="translate(16, 270)">
               <rect width="148" height="54" rx="10" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.5" />
-              <text x="74" y="24" text-anchor="middle" fill="var(--ink)" font-size="13.5" font-weight="700">审批与策略</text>
-              <text x="74" y="42" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">allow / deny / ask</text>
+              <text x="74" y="24" text-anchor="middle" fill="var(--ink)" font-size="13.5" font-weight="700">工具与插件</text>
+              <text x="74" y="42" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">defineTool / Schema</text>
             </g>
 
             <g transform="translate(16, 118)">
@@ -169,7 +169,7 @@
     </section>
 
     <!-- ==================== SLIDE 2: WHY HARNESS ==================== -->
-    <section class="slide" data-slide="2" data-title="为什么需要 Harness？" data-time="01:00 · 2 min" data-note="人话比喻：大模型是 V8 发动机，Harness 是底盘、刹车和方向盘。举 3 个真实工程痛点，说明为什么传统“精装房”Agent 很难按公司需求改造。">
+    <section class="slide" data-slide="2" data-title="为什么需要 Harness？" data-time="01:00 · 1.5 min" data-note="人话比喻：大模型是 V8 发动机，Harness 是底盘。下面 3 个痛点后面都会逐一给出 dsh 的解法：换文件沙箱（第7页）、长对话不丢历史保缓存（第8-9页）、换批量调工具循环（第11页 PTC）。">
       <div class="slide-inner">
         <div class="slide-head">
           <h2>为什么需要 Harness？别再魔改“精装房”</h2>
@@ -189,7 +189,7 @@
 
               <rect x="234" y="58" width="270" height="82" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.8" />
               <text x="369" y="90" text-anchor="middle" fill="var(--accent)" font-size="16" font-weight="700">Harness 运行时底盘</text>
-              <text x="369" y="114" text-anchor="middle" fill="var(--ink)" font-size="12">读写文件 · 跑命令 · 记日志 · 审批刹车</text>
+              <text x="369" y="114" text-anchor="middle" fill="var(--ink)" font-size="12">读写文件 · 调工具 · 记日志 · 倒车回放</text>
 
               <rect x="16" y="184" width="508" height="182" rx="14" fill="var(--surface-alt)" stroke="var(--border)" stroke-width="1.4" />
               <text x="36" y="212" fill="var(--warm)" font-size="12" font-weight="700">传统 Agent 的“精装房”困境</text>
@@ -202,9 +202,9 @@
                 <rect x="188" y="268" width="124" height="28" rx="6" fill="var(--surface)" stroke="var(--border)" />
                 <text x="250" y="286" text-anchor="middle">messages[]</text>
                 <rect x="52" y="304" width="122" height="28" rx="6" fill="var(--surface)" stroke="var(--border)" />
-                <text x="113" y="322" text-anchor="middle">本地文件/命令</text>
+                <text x="113" y="322" text-anchor="middle">本地文件读写</text>
                 <rect x="188" y="304" width="124" height="28" rx="6" fill="var(--surface)" stroke="var(--border)" />
-                <text x="250" y="322" text-anchor="middle">审批 / UI</text>
+                <text x="250" y="322" text-anchor="middle">工具调度 / UI</text>
               </g>
 
               <path d="M328 287 L366 287" stroke="var(--ink-muted)" stroke-width="1.6" stroke-dasharray="4 4" />
@@ -216,10 +216,10 @@
 
           <div class="content-col">
             <ul class="bullet-list large-bullets">
-              <li><span class="bullet-dot"></span><strong>发动机 vs 底盘</strong>：模型负责想，Harness 负责安全干活</li>
-              <li><span class="bullet-dot"></span><strong>想换底座</strong>：本地读写 / Bash 切进公司沙箱，耦合太死</li>
-              <li><span class="bullet-dot"></span><strong>想改行为</strong>：结果脱敏、接入私有审批，现有钩子不够用</li>
-              <li><span class="bullet-dot"></span><strong>想换循环</strong>：ReAct 换自定义 Loop，只能 Fork 魔改源码</li>
+              <li><span class="bullet-dot"></span><strong>发动机 vs 底盘</strong>：模型负责想，Harness 负责把能力落地干活</li>
+              <li><span class="bullet-dot"></span><strong>痛点 1（换底座）</strong>：本地读写切进远程沙箱，核心耦合难改</li>
+              <li><span class="bullet-dot"></span><strong>痛点 2（长对话）</strong>：原地截断消息数组，既丢历史又打穿缓存</li>
+              <li><span class="bullet-dot"></span><strong>痛点 3（改循环）</strong>：一步步调工具太慢，想换执行模式只能 Fork</li>
             </ul>
             <div class="takeaway-strip">
               <strong>dsh 的思路：</strong>不做改不动的精装房，做成<strong>连核心都能热插拔</strong>的底盘。
@@ -230,7 +230,7 @@
     </section>
 
     <!-- ==================== SLIDE 3: EVERYTHING IS A PLUGIN ==================== -->
-    <section class="slide" data-slide="3" data-title="核心理念：万物皆插件" data-time="03:00 · 2 min" data-note="用一张对比表讲透 dsh 的“无特权核心”：官方内置模块和我们自己写的插件完全平权，甚至可以在对话里用 Creator Mode 动态给自己写插件并热加载。">
+    <section class="slide" data-slide="3" data-title="核心理念：万物皆插件" data-time="02:30 · 1.5 min" data-note="用对比表讲透“无特权核心”：官方内置模块和我们自己写的插件完全平权，不用 Fork 源码，改配置就能替换。">
       <div class="slide-inner">
         <div class="slide-head">
           <h2>核心理念：什么是真正的“万物皆插件”？</h2>
@@ -254,8 +254,8 @@
                 </tr>
                 <tr>
                   <td>可换范围</td>
-                  <td>Tools、MCP、少量事件钩子</td>
-                  <td class="col-dsh">模型、文件、沙箱、审批、UI、<strong>Agent Loop</strong></td>
+                  <td>Tools、MCP、少量钩子</td>
+                  <td class="col-dsh">模型、文件、工具、日志、UI、<strong>Agent Loop</strong></td>
                 </tr>
                 <tr>
                   <td>核心特权</td>
@@ -273,12 +273,12 @@
 
           <div class="content-col">
             <ul class="bullet-list large-bullets">
-              <li><span class="bullet-dot"></span><strong>平权设计</strong>：内置能力与自研插件地位完全一致</li>
-              <li><span class="bullet-dot"></span><strong>按需拼装</strong>：用配置把底座变成 Web、CLI 或 SDK</li>
-              <li><span class="bullet-dot"></span><strong>Creator Mode</strong>：对话里直接写插件并热加载，不用重启</li>
+              <li><span class="bullet-dot"></span><strong>平权设计</strong>：系统内置模块与自研插件地位完全一致</li>
+              <li><span class="bullet-dot"></span><strong>按需拼装</strong>：同一套底座，配出 Web、Headless、SDK 三种形态</li>
+              <li><span class="bullet-dot"></span><strong>运行热插拔</strong>：插件按依赖自动挂载，卸载时自动清理资源</li>
             </ul>
             <div class="takeaway-strip">
-              接下来先看<strong>怎么配（Profile Patch）</strong>、<strong>怎么用（3 种方式）</strong>，再拆<strong>3 个底层原理</strong>。
+              接下来先看<strong>怎么配（Profile Patch）</strong>、<strong>怎么用（3 种方式）</strong>，再拆<strong>底层原理与流程</strong>。
             </div>
           </div>
         </div>
@@ -286,7 +286,7 @@
     </section>
 
     <!-- ==================== SLIDE 4: PROFILE & PATCH ==================== -->
-    <section class="slide" data-slide="4" data-title="Profile 与 cordis.patch.yml 拼装过程" data-time="05:00 · 2.5 min" data-note="讲清 dsh 最核心的配置机制：不要手改 cordis.yml，而是通过 cordis.patch.yml 按 id 覆盖 config 或用 insert 挂载新插件。顺便提醒坑点：patch 对 config 是整块替换，不是 deep merge，调完用 --dump-config 看最终树！">
+    <section class="slide" data-slide="4" data-title="Profile 与 cordis.patch.yml 拼装过程" data-time="04:00 · 2 min" data-note="讲清 dsh 最核心的配置机制：不要手改 cordis.yml，而是通过 cordis.patch.yml 按 id 覆盖 config 或用 insert 挂载新插件。提醒坑点：patch 对 config 是整块替换，不是深度合并，调完用 --dump-config 看最终树。">
       <div class="slide-inner">
         <div class="slide-head">
           <h2>Profile 与 Patch：插件树是怎么一层层“补丁”出来的？</h2>
@@ -304,7 +304,7 @@
   <span class="tok-kw">config</span>:
     <span class="tok-kw">personaPrefix</span>: <span class="tok-str">"你是团队研发助手，改代码前先跑单测。"</span>
 
-<span class="tok-cm"># 2. 替换某个内置能力（例如把本地 fs 换掉）</span>
+<span class="tok-cm"># 2. 替换某个内置能力（例如把本地 fs 换成沙箱版）</span>
 - <span class="tok-kw">id</span>: <span class="tok-str">fs-provider</span>
   <span class="tok-kw">name</span>: <span class="tok-str">'@my-org/dsh-fs-sandbox'</span>
 
@@ -312,7 +312,7 @@
 - <span class="tok-kw">insert</span>:
     - <span class="tok-kw">id</span>: <span class="tok-str">my-metrics</span>
       <span class="tok-kw">name</span>: <span class="tok-str">'@my-org/dsh-metrics-plugin'</span>
-      <span class="tok-kw">config</span>: { <span class="tok-kw">level</span>: <span class="tok-str">info</span> }</code></pre>
+      <span class="tok-kw">config</span>: { <span class="tok-kw">strict</span>: <span class="tok-kw">true</span> }</code></pre>
             </div>
 
             <div class="code-window compact">
@@ -329,34 +329,28 @@
               <rect x="6" y="6" width="528" height="270" rx="14" fill="var(--surface-alt)" stroke="var(--border)" stroke-width="1.3" />
               <text x="24" y="32" fill="var(--ink-muted)" font-size="12" font-weight="700">PATCH 叠加顺序（后层覆盖前层）</text>
 
-              <!-- Layer 1 -->
               <rect x="24" y="46" width="234" height="44" rx="8" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.4" />
               <text x="38" y="66" fill="var(--ink)" font-size="12.5" font-weight="700">1. Profile 默认 Bundles</text>
               <text x="38" y="82" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">dsh-base + loop + web/headless</text>
 
-              <!-- Layer 2 -->
               <rect x="24" y="102" width="234" height="44" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.7" />
               <text x="38" y="122" fill="var(--accent)" font-size="12.5" font-weight="700">2. Profile Patch（最常用）</text>
               <text x="38" y="138" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">profiles/&lt;name&gt;/cordis.patch.yml</text>
 
-              <!-- Layer 3 -->
               <rect x="24" y="158" width="234" height="44" rx="8" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.4" />
               <text x="38" y="178" fill="var(--ink)" font-size="12.5" font-weight="700">3. 全局 Home Patch</text>
               <text x="38" y="194" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">~/.dsh/cordis.patch.yml</text>
 
-              <!-- Layer 4 -->
               <rect x="24" y="214" width="234" height="44" rx="8" fill="var(--warm-soft)" stroke="var(--warm)" stroke-width="1.4" />
               <text x="38" y="234" fill="var(--warm)" font-size="12.5" font-weight="700">4. CLI 临时覆盖</text>
               <text x="38" y="250" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">dsh --patch override.yml</text>
 
-              <!-- Merge lines to Final Tree -->
               <path d="M258 68 C 296 68, 290 152, 326 152" fill="none" stroke="var(--border-strong)" stroke-width="1.6" />
               <path d="M258 124 C 292 124, 294 152, 326 152" fill="none" stroke="var(--accent)" stroke-width="2" />
               <path d="M258 180 C 292 180, 294 152, 326 152" fill="none" stroke="var(--border-strong)" stroke-width="1.6" />
               <path d="M258 236 C 296 236, 290 152, 326 152" fill="none" stroke="var(--warm)" stroke-width="1.6" />
               <polygon points="324,147 334,152 324,157" fill="var(--accent)" />
 
-              <!-- Final Tree box -->
               <rect x="336" y="72" width="180" height="160" rx="12" fill="var(--surface)" stroke="var(--emerald)" stroke-width="1.8" />
               <text x="426" y="100" text-anchor="middle" fill="var(--emerald)" font-size="13" font-weight="700">最终生效插件树</text>
               <g font-family="JetBrains Mono, monospace" font-size="10.8" fill="var(--ink)">
@@ -381,7 +375,7 @@
     </section>
 
     <!-- ==================== SLIDE 5: 3 MODES (WEB / HEADLESS / SDK) ==================== -->
-    <section class="slide" data-slide="5" data-title="三种使用方式：Web · Headless · SDK" data-time="07:30 · 2.5 min" data-note="点上方三个标签切换演示 Web、Headless 和 SDK 三种真实用法：日常开发用 Web 工作台，CI/脚本自动化用 Headless 一次性执行，把 Agent 嵌进自己业务系统就用 SDK 走 JSON-RPC。">
+    <section class="slide" data-slide="5" data-title="三种使用方式：Web · Headless · SDK" data-time="06:00 · 2 min" data-note="点上方三个标签切换演示 Web、Headless 和 SDK 三种真实用法：日常开发用 Web 工作台，CI/脚本自动化用 Headless 一次性执行，把 Agent 嵌进自己业务系统就用 SDK 走 JSON-RPC。">
       <div class="slide-inner">
         <div class="slide-head head-with-controls">
           <h2>三种使用方式：Web · Headless · SDK</h2>
@@ -393,14 +387,12 @@
         </div>
 
         <div class="split-2 balanced-wide">
-          <!-- Left: Bespoke Architecture Diagram per Mode -->
           <div class="visual-panel">
             <!-- Mode 1: Web -->
             <svg class="diagram-svg mode-svg" id="modeSvgWeb" viewBox="0 0 580 330" role="img" aria-label="Web 工作台使用方式架构图">
               <rect x="8" y="8" width="564" height="314" rx="14" fill="var(--surface-alt)" stroke="var(--border)" stroke-width="1.3" />
               <text x="28" y="38" fill="var(--accent)" font-size="13" font-weight="700">方式一：Web 工作台（日常交互开发 · 开箱即用）</text>
 
-              <!-- Browser mockup -->
               <rect x="28" y="64" width="218" height="218" rx="12" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.8" />
               <rect x="28" y="64" width="218" height="32" rx="12" fill="var(--accent-soft)" />
               <circle cx="46" cy="80" r="4" fill="var(--warm)" />
@@ -408,23 +400,21 @@
               <circle cx="74" cy="80" r="4" fill="var(--emerald)" />
               <text x="148" y="84" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">127.0.0.1:3080</text>
               <rect x="44" y="110" width="84" height="154" rx="7" fill="var(--surface-alt)" stroke="var(--border)" />
-              <text x="86" y="138" text-anchor="middle" fill="var(--ink)" font-size="11.5" font-weight="700">对话 &amp; 审批</text>
-              <text x="86" y="160" text-anchor="middle" fill="var(--ink-muted)" font-size="10.5">流式思考</text>
-              <text x="86" y="180" text-anchor="middle" fill="var(--ink-muted)" font-size="10.5">一键 Fork</text>
-              <text x="86" y="200" text-anchor="middle" fill="var(--accent)" font-size="10.5" font-weight="600">Creator 写插件</text>
+              <text x="86" y="138" text-anchor="middle" fill="var(--ink)" font-size="11.5" font-weight="700">对话时间线</text>
+              <text x="86" y="162" text-anchor="middle" fill="var(--ink-muted)" font-size="10.5">流式思考</text>
+              <text x="86" y="184" text-anchor="middle" fill="var(--ink-muted)" font-size="10.5">一键 Fork</text>
+              <text x="86" y="206" text-anchor="middle" fill="var(--accent)" font-size="10.5" font-weight="600">实时日志视图</text>
               <rect x="138" y="110" width="92" height="154" rx="7" fill="var(--surface-alt)" stroke="var(--border)" />
               <text x="184" y="138" text-anchor="middle" fill="var(--ink)" font-size="11.5" font-weight="700">文件 &amp; 插件</text>
-              <text x="184" y="160" text-anchor="middle" fill="var(--ink-muted)" font-size="10.5">工作区浏览</text>
-              <text x="184" y="180" text-anchor="middle" fill="var(--ink-muted)" font-size="10.5">终端输出</text>
-              <text x="184" y="200" text-anchor="middle" fill="var(--emerald)" font-size="10.5" font-weight="600">插件开关热载</text>
+              <text x="184" y="162" text-anchor="middle" fill="var(--ink-muted)" font-size="10.5">工作区浏览</text>
+              <text x="184" y="184" text-anchor="middle" fill="var(--ink-muted)" font-size="10.5">配置表单</text>
+              <text x="184" y="206" text-anchor="middle" fill="var(--emerald)" font-size="10.5" font-weight="600">插件开关热载</text>
 
-              <!-- Arrow -->
               <line x1="246" y1="173" x2="328" y2="173" stroke="var(--accent)" stroke-width="2" />
               <polygon points="326,168 336,173 326,178" fill="var(--accent)" />
               <polygon points="256,168 246,173 256,178" fill="var(--accent)" />
               <text x="291" y="158" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="10.5">HTTP / WS</text>
 
-              <!-- dsh runtime -->
               <rect x="338" y="88" width="212" height="170" rx="12" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.6" />
               <text x="444" y="118" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="700">dsh Runtime</text>
               <text x="444" y="138" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono, monospace" font-size="11">profile: web</text>
@@ -433,7 +423,7 @@
               <rect x="358" y="202" width="172" height="36" rx="7" fill="var(--surface-alt)" stroke="var(--border)" />
               <text x="444" y="225" text-anchor="middle" fill="var(--ink)" font-size="11.5">Loop · Tools · Session Log</text>
 
-              <text x="290" y="306" text-anchor="middle" fill="var(--ink-muted)" font-size="12">最适合：个人日常写代码、调试插件、可视化查看上下文与审批</text>
+              <text x="290" y="306" text-anchor="middle" fill="var(--ink-muted)" font-size="12">最适合：个人日常写代码、调试插件、可视化查看上下文</text>
             </svg>
 
             <!-- Mode 2: Headless -->
@@ -441,7 +431,6 @@
               <rect x="8" y="8" width="564" height="314" rx="14" fill="var(--surface-alt)" stroke="var(--border)" stroke-width="1.3" />
               <text x="28" y="38" fill="var(--emerald)" font-size="13" font-weight="700">方式二：Headless 无头模式（CI / 批处理 · 跑完即退）</text>
 
-              <!-- Left: CI / Cron / Terminal -->
               <rect x="28" y="90" width="150" height="156" rx="12" fill="var(--surface)" stroke="var(--emerald)" stroke-width="1.8" />
               <text x="103" y="122" text-anchor="middle" fill="var(--ink)" font-size="13.5" font-weight="700">CI / 定时脚本</text>
               <text x="103" y="148" text-anchor="middle" fill="var(--ink-muted)" font-size="11.5">GitHub Actions</text>
@@ -449,11 +438,9 @@
               <rect x="44" y="190" width="118" height="36" rx="7" fill="var(--emerald-soft)" />
               <text x="103" y="213" text-anchor="middle" fill="var(--emerald)" font-family="JetBrains Mono, monospace" font-size="10.8">传入任务 Prompt</text>
 
-              <!-- Arrow 1 -->
               <line x1="178" y1="168" x2="218" y2="168" stroke="var(--emerald)" stroke-width="2" />
               <polygon points="216,163 226,168 216,173" fill="var(--emerald)" />
 
-              <!-- Middle: Headless dsh -->
               <rect x="228" y="76" width="174" height="184" rx="12" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.6" />
               <text x="315" y="106" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="700">dsh 一次性进程</text>
               <text x="315" y="126" text-anchor="middle" fill="var(--emerald)" font-family="JetBrains Mono, monospace" font-size="11">profile: headless</text>
@@ -464,11 +451,9 @@
               <rect x="244" y="218" width="142" height="30" rx="6" fill="var(--emerald-soft)" />
               <text x="315" y="238" text-anchor="middle" fill="var(--emerald)" font-size="11" font-weight="600">落盘 Session Log</text>
 
-              <!-- Arrow 2 -->
               <line x1="402" y1="168" x2="438" y2="168" stroke="var(--emerald)" stroke-width="2" />
               <polygon points="436,163 446,168 436,173" fill="var(--emerald)" />
 
-              <!-- Right: Output -->
               <rect x="448" y="100" width="104" height="136" rx="12" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.5" />
               <text x="500" y="132" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="700">标准输出</text>
               <text x="500" y="160" text-anchor="middle" fill="var(--ink-muted)" font-family="JetBrains Mono, monospace" font-size="11">stdout 结果</text>
@@ -483,7 +468,6 @@
               <rect x="8" y="8" width="564" height="314" rx="14" fill="var(--surface-alt)" stroke="var(--border)" stroke-width="1.3" />
               <text x="28" y="38" fill="var(--warm)" font-size="13" font-weight="700">方式三：SDK 编程接入（把 dsh 嵌进你的业务系统）</text>
 
-              <!-- Left: Host App -->
               <rect x="28" y="78" width="178" height="182" rx="12" fill="var(--surface)" stroke="var(--warm)" stroke-width="1.8" />
               <text x="117" y="108" text-anchor="middle" fill="var(--ink)" font-size="13.5" font-weight="700">你的业务应用</text>
               <text x="117" y="128" text-anchor="middle" fill="var(--ink-muted)" font-size="11">Python / TS / Rust / IDE</text>
@@ -492,7 +476,6 @@
               <text x="117" y="214" text-anchor="middle" fill="var(--ink-muted)" font-size="11">创建/恢复 Session</text>
               <text x="117" y="236" text-anchor="middle" fill="var(--ink-muted)" font-size="11">实时消费流式事件</text>
 
-              <!-- Middle: stdio JSON-RPC -->
               <line x1="206" y1="169" x2="344" y2="169" stroke="var(--warm)" stroke-width="2" stroke-dasharray="5 4" />
               <polygon points="342,164 352,169 342,174" fill="var(--warm)" />
               <polygon points="216,164 206,169 216,174" fill="var(--warm)" />
@@ -500,7 +483,6 @@
               <text x="279" y="165" text-anchor="middle" fill="var(--warm)" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">JSON-RPC</text>
               <text x="279" y="183" text-anchor="middle" fill="var(--ink-muted)" font-size="10.5">独立子进程通信</text>
 
-              <!-- Right: dsh SDK process -->
               <rect x="354" y="78" width="196" height="182" rx="12" fill="var(--surface)" stroke="var(--border-strong)" stroke-width="1.6" />
               <text x="452" y="108" text-anchor="middle" fill="var(--ink)" font-size="13.5" font-weight="700">dsh 托管子进程</text>
               <text x="452" y="128" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono, monospace" font-size="11">profile: sdk</text>
@@ -509,11 +491,10 @@
               <rect x="372" y="198" width="160" height="38" rx="7" fill="var(--surface-alt)" stroke="var(--border)" />
               <text x="452" y="222" text-anchor="middle" fill="var(--ink)" font-size="11.5">独立隔离，不拖垮宿主</text>
 
-              <text x="290" y="306" text-anchor="middle" fill="var(--ink-muted)" font-size="12">最适合：做企业内部 Agent 平台、定制 IDE 插件、多 Agent 编排</text>
+              <text x="290" y="306" text-anchor="middle" fill="var(--ink-muted)" font-size="12">最适合：企业内部 Agent 平台、定制 IDE 插件、多 Agent 编排</text>
             </svg>
           </div>
 
-          <!-- Right: Usage Code + Concise Bullets -->
           <div class="content-col">
             <div class="code-window" id="modeCodeWeb">
               <div class="code-header">
@@ -551,7 +532,7 @@ session = client.<span class="tok-fn">create_session</span>()
     <span class="tok-fn">print</span>(event)</code></pre>
             </div>
 
-            <ul class="bullet-list large-bullets" id="modeBullets">
+            <ul class="bullet-list large-bullets">
               <li><span class="bullet-dot"></span><strong>Web 模式</strong>：浏览器可视化交互，适合日常编码与插件调试</li>
               <li><span class="bullet-dot"></span><strong>Headless 模式</strong>：无 UI 单次运行，直接接进 CI / 定时任务</li>
               <li><span class="bullet-dot"></span><strong>SDK 模式</strong>：通过 JSON-RPC 跨语言调用，嵌入业务系统</li>
@@ -562,7 +543,7 @@ session = client.<span class="tok-fn">create_session</span>()
     </section>
 
     <!-- ==================== SLIDE 6: PRINCIPLE 1 CORDIS DI & EFFECT ==================== -->
-    <section class="slide" data-slide="6" data-title="原理一：Cordis 依赖注入与 effect 自动清理" data-time="10:00 · 2.5 min" data-note="重点讲清两个概念：1) 依赖注入（DI）：类似 Spring/NestJS，声明 inject 后由 Cordis 自动注入 ctx.fs 等服务，而且支持运行时动态上下线；2) effect：副作用都包进 ctx.effect，返回清理函数，热卸载时自动逆序回滚，不漏资源。">
+    <section class="slide" data-slide="6" data-title="原理一：Cordis 依赖注入与 effect 自动清理" data-time="08:00 · 2 min" data-note="重点讲清两个概念：1) 依赖注入（DI）：类似 Spring/NestJS，声明 inject 后由 Cordis 自动注入 ctx.fs 等服务，而且支持运行时动态上下线；2) effect：副作用都包进 ctx.effect，返回清理函数，热卸载时自动逆序回滚，不漏资源。">
       <div class="slide-inner">
         <div class="slide-head">
           <h2>原理一：Cordis 依赖注入（DI）+ <code>effect</code> 自动清理</h2>
@@ -594,7 +575,6 @@ session = client.<span class="tok-fn">create_session</span>()
             <svg class="diagram-svg compact-svg" viewBox="0 0 500 206" role="img" aria-label="Cordis 响应式依赖注入与 effect 自动回收图">
               <rect x="6" y="6" width="488" height="194" rx="12" fill="var(--surface-alt)" stroke="var(--border)" stroke-width="1.3" />
 
-              <!-- Left: DI -->
               <text x="24" y="32" fill="var(--accent)" font-size="12.5" font-weight="700">1. 响应式依赖注入（DI）</text>
               <rect x="24" y="48" width="88" height="32" rx="7" fill="var(--surface)" stroke="var(--emerald)" stroke-width="1.5" />
               <text x="68" y="69" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono, monospace" font-size="11.5">ctx.fs</text>
@@ -608,7 +588,6 @@ session = client.<span class="tok-fn">create_session</span>()
 
               <line x1="244" y1="22" x2="244" y2="184" stroke="var(--border)" stroke-width="1.2" stroke-dasharray="4 4" />
 
-              <!-- Right: effect -->
               <text x="264" y="32" fill="var(--warm)" font-size="12.5" font-weight="700">2. ctx.effect 自动回收</text>
               <rect x="264" y="50" width="208" height="34" rx="7" fill="var(--surface)" stroke="var(--border-strong)" />
               <text x="368" y="72" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono, monospace" font-size="11.5">挂载：分配定时器 / 连接 / 工具</text>
@@ -631,13 +610,12 @@ session = client.<span class="tok-fn">create_session</span>()
     </section>
 
     <!-- ==================== SLIDE 7: PRINCIPLE 2 REAL DEFINITION & REWRITE ==================== -->
-    <section class="slide" data-slide="7" data-title="原理二：内置 Definition 与自定义重写（以 dsh-fs 为例）" data-time="12:30 · 2.5 min" data-note="用系统真实内置的文件服务 dsh-fs 举例！左边看官方 Definition 定义了什么接口（readFile / writeFile），右边看我们怎么继承并重写一个只读/沙箱版 Provider 挂到 ctx.fs 上——上层给模型用的 dsh-tool-fs 一行代码都不用改！">
+    <section class="slide" data-slide="7" data-title="原理二：内置 dsh-fs Definition 与重写示例" data-time="10:00 · 2 min" data-note="用系统真实内置的文件服务 dsh-fs 举例！左边看官方 Definition 定义了什么接口（readFile / writeFile），右边看我们怎么继承并重写一个沙箱版 Provider 挂到 ctx.fs 上——上层给模型用的 dsh-tool-fs 一行代码都不用改！">
       <div class="slide-inner">
         <div class="slide-head">
           <h2>原理二：看系统内置 <code>dsh-fs</code>——如何按 Definition 重写？</h2>
         </div>
 
-        <!-- Compact 3-role ribbon -->
         <div class="seam-ribbon">
           <div class="seam-chip">
             <span class="chip-role">Consumer 消费层</span>
@@ -656,7 +634,6 @@ session = client.<span class="tok-fn">create_session</span>()
         </div>
 
         <div class="split-2">
-          <!-- Left: Built-in Definition -->
           <div class="code-window">
             <div class="code-header">
               <span class="code-file">系统内置 Definition · @deepseek-ai/dsh-fs</span>
@@ -679,7 +656,6 @@ session = client.<span class="tok-fn">create_session</span>()
 }</code></pre>
           </div>
 
-          <!-- Right: Rewritten Provider -->
           <div class="code-window">
             <div class="code-header">
               <span class="code-file">重写实现 Provider · my-sandbox-fs.ts</span>
@@ -687,7 +663,7 @@ session = client.<span class="tok-fn">create_session</span>()
             </div>
             <pre class="code-body code-snug"><code><span class="tok-kw">import</span> { FsService } <span class="tok-kw">from</span> <span class="tok-str">'@deepseek-ai/dsh-fs'</span>
 
-<span class="tok-cm">// 继承同一个 Definition，把读写限制在工作区/远程沙箱</span>
+<span class="tok-cm">// 继承同一个 Definition，把读写限制在远程沙箱</span>
 <span class="tok-kw">export class</span> <span class="tok-fn">SandboxFsService</span> <span class="tok-kw">extends</span> FsService {
   <span class="tok-kw">async</span> <span class="tok-fn">readFile</span>(path: <span class="tok-kw">string</span>) {
     <span class="tok-kw">return</span> <span class="tok-fn">remoteContainerRead</span>(<span class="tok-fn">guardPath</span>(path))
@@ -702,14 +678,14 @@ session = client.<span class="tok-fn">create_session</span>()
         </div>
 
         <ul class="bullet-list horizontal-bullets">
-          <li><span class="bullet-dot"></span><strong>面向接口编程</strong>：<code>dsh-fs</code> / <code>dsh-shell</code> / <code>dsh-compaction</code> 全部采用这种接缝结构</li>
-          <li><span class="bullet-dot"></span><strong>一行 Patch 生效</strong>：把 <code>dsh-fs-local</code> 换成 <code>SandboxFsService</code>，上层所有工具和模型 Schema 零修改</li>
+          <li><span class="bullet-dot"></span><strong>面向接口解耦</strong>：系统核心能力（文件、命令、运行时）都采用这种接缝结构</li>
+          <li><span class="bullet-dot"></span><strong>一行 Patch 替换</strong>：在 <code>cordis.patch.yml</code> 里换掉 Provider，上层工具与模型零修改</li>
         </ul>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 8: PRINCIPLE 3 SESSION LOG ==================== -->
-    <section class="slide" data-slide="8" data-title="原理三：Session Log 与影子压缩" data-time="15:00 · 2 min" data-note="用数据库 WAL + Git 分支类比：所有交互只追加写入 Log，发给模型的是投影视图；压缩时不删原历史，既能 Fork 回溯，又保住 97%-99% 的 Prefix Cache 命中率。">
+    <!-- ==================== SLIDE 8: PRINCIPLE 3A SESSION LOG ==================== -->
+    <section class="slide" data-slide="8" data-title="原理三：Session Log 与影子压缩" data-time="12:00 · 1.5 min" data-note="用数据库 WAL + Git 分支类比：所有交互只追加写入 Log，不原地删改 messages 数组；压缩时追加一条 replace 事件，既能 Fork 倒车，又能保住 97%-99% 的 Prefix Cache。顺势引出下一页：图里中间这个 Projection 到底怎么算？">
       <div class="slide-inner">
         <div class="slide-head">
           <h2>原理三：Session Log 为唯一真相 + 影子压缩</h2>
@@ -749,7 +725,7 @@ session = client.<span class="tok-fn">create_session</span>()
 
               <path d="M174 96 L174 134 L256 164 M409 96 L320 164 M536 96 L536 164" fill="none" stroke="var(--border-strong)" stroke-width="1.5" stroke-dasharray="4 4" />
               <rect x="196" y="114" width="208" height="28" rx="14" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.4" />
-              <text x="300" y="132" text-anchor="middle" fill="var(--accent)" font-size="11.5" font-weight="700">Projection 动态投影层</text>
+              <text x="300" y="132" text-anchor="middle" fill="var(--accent)" font-size="11.5" font-weight="700">Projection 动态投影（下一页详解）</text>
 
               <text x="26" y="176" fill="var(--emerald)" font-size="12.5" font-weight="700">2. 发给 LLM 的压缩视图（表面折叠，前缀稳定）</text>
               <g font-family="JetBrains Mono, monospace" font-size="11.5">
@@ -811,9 +787,8 @@ session = client.<span class="tok-fn">create_session</span>()
           <div class="content-col">
             <ul class="bullet-list large-bullets">
               <li><span class="bullet-dot"></span><strong>唯一真相</strong>：只追加写日志（JSONL / SQLite）</li>
-              <li><span class="bullet-dot"></span><strong>按需投影</strong>：给模型的消息数组由日志动态算出</li>
               <li><span class="bullet-dot"></span><strong>低成本 Fork</strong>：改歪了随时回退分叉，完整可回放</li>
-              <li><span class="bullet-dot"></span><strong>影子压缩</strong>：只折叠视图、不删原文、不打穿缓存</li>
+              <li><span class="bullet-dot"></span><strong>影子压缩</strong>：追加 <code>replace</code> 事件折叠旧历史，不删原文</li>
             </ul>
 
             <div class="code-window compact">
@@ -831,8 +806,92 @@ session = client.<span class="tok-fn">create_session</span>()
       </div>
     </section>
 
-    <!-- ==================== SLIDE 9: SIMPLE 4-STEP FULL FLOW ==================== -->
-    <section class="slide" data-slide="9" data-title="核心全流程：4 步看懂一条指令怎么跑" data-time="17:00 · 1.5 min" data-note="极简 4 步讲清主干：1) 入口进来写进 Log；2) 拼上下文发给模型；3) 审批并调用工具（经过 Seam）；4) 结果再写回 Log，模型没干完就回到第 2 步循环。记住最关键一句：外圈整个 Loop 本身也能换！">
+    <!-- ==================== SLIDE 9: NEW - PROJECTION EXPLAINED SIMPLY ==================== -->
+    <section class="slide" data-slide="9" data-title="原理三（续）：说人话讲懂 Projection 动态投影" data-time="13:30 · 2 min" data-note="用“银行流水账 → 余额 / 月度账单 / 报税表”或者“数据库流水表 → 多个 CREATE VIEW”类比 Projection！指出左边的 5 条原始事件怎么同时投射出 3 种视图：模型只看精简后的 2 条消息，UI 能展开看 500 行报错原文，统计面板能直接算出 Token 和进度，全用一份日志、永不打架。">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <h2>原理三（续）：什么是 Projection？一份流水，多种视图</h2>
+        </div>
+
+        <div class="split-2 wide-left">
+          <div class="visual-panel">
+            <svg class="diagram-svg" viewBox="0 0 650 356" role="img" aria-label="一份原始 SessionEvent 流水投射出模型、UI、统计三种视图">
+              <rect x="6" y="6" width="638" height="344" rx="14" fill="var(--surface-alt)" stroke="var(--border)" stroke-width="1.3" />
+
+              <!-- Left: Raw Bank Statement / Event Log -->
+              <text x="24" y="34" fill="var(--ink)" font-size="12.5" font-weight="700">1 份原始流水（SessionEvent 只追加）</text>
+              <g font-family="JetBrains Mono, monospace" font-size="10.8">
+                <rect x="24" y="48" width="234" height="44" rx="8" fill="var(--surface)" stroke="var(--border-strong)" />
+                <text x="36" y="66" fill="var(--accent)" font-weight="600">#1 user/message</text>
+                <text x="36" y="83" fill="var(--ink-muted)">"帮我查订单接口 500 报错"</text>
+
+                <rect x="24" y="100" width="234" height="44" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-dasharray="4 3" />
+                <text x="36" y="118" fill="var(--ink-muted)" font-weight="600">#2 stream/chunk (纯日志)</text>
+                <text x="36" y="135" fill="var(--ink-muted)">流式碎片 / 心跳 · 不进模型</text>
+
+                <rect x="24" y="152" width="234" height="44" rx="8" fill="var(--surface)" stroke="var(--border-strong)" />
+                <text x="36" y="170" fill="var(--ink)" font-weight="600">#3 tool/result</text>
+                <text x="36" y="187" fill="var(--ink-muted)">返回 500 行堆栈日志 (4k tok)</text>
+
+                <rect x="24" y="204" width="234" height="44" rx="8" fill="var(--warm-soft)" stroke="var(--warm)" stroke-width="1.5" />
+                <text x="36" y="222" fill="var(--warm)" font-weight="600">#4 compaction/summary</text>
+                <text x="36" y="239" fill="var(--ink-muted)">surfaceOp: replace(#1..#3)</text>
+
+                <rect x="24" y="256" width="234" height="44" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5" />
+                <text x="36" y="274" fill="var(--accent)" font-weight="600">#5 user/message</text>
+                <text x="36" y="291" fill="var(--ink-muted)">"改完顺手跑一下单测"</text>
+              </g>
+              <text x="141" y="328" text-anchor="middle" fill="var(--ink-muted)" font-size="11">类比：银行原始流水表（永不删改）</text>
+
+              <!-- Fan-out Projection arrows -->
+              <path d="M258 174 C 296 174, 294 82, 336 82" fill="none" stroke="var(--accent)" stroke-width="2" />
+              <polygon points="334,77 344,82 334,87" fill="var(--accent)" />
+
+              <path d="M258 174 L 336 174" fill="none" stroke="var(--emerald)" stroke-width="2" />
+              <polygon points="334,169 344,174 334,179" fill="var(--emerald)" />
+
+              <path d="M258 174 C 296 174, 294 268, 336 268" fill="none" stroke="var(--warm)" stroke-width="2" />
+              <polygon points="334,263 344,268 334,273" fill="var(--warm)" />
+
+              <!-- Right: 3 Derived Views -->
+              <text x="346" y="34" fill="var(--accent)" font-size="12.5" font-weight="700">按需投影出 3 种视图（各看各的）</text>
+
+              <!-- View A: Model -->
+              <rect x="346" y="48" width="278" height="74" rx="10" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.7" />
+              <text x="362" y="72" fill="var(--accent)" font-size="12.5" font-weight="700">视图 A：给大模型看的 messages[]</text>
+              <text x="362" y="92" fill="var(--ink)" font-family="JetBrains Mono, monospace" font-size="10.8">[ 摘要(#4), "改完跑单测"(#5) ]</text>
+              <text x="362" y="110" fill="var(--ink-muted)" font-size="10.8">跳过 #2，折叠 #1~#3 → 省 Token 保缓存</text>
+
+              <!-- View B: UI -->
+              <rect x="346" y="138" width="278" height="74" rx="10" fill="var(--surface)" stroke="var(--emerald)" stroke-width="1.7" />
+              <text x="362" y="162" fill="var(--emerald)" font-size="12.5" font-weight="700">视图 B：给前端 UI 看的时间线</text>
+              <text x="362" y="182" fill="var(--ink)" font-size="11.2">完整气泡 + 可展开的 500 行报错原文</text>
+              <text x="362" y="200" fill="var(--ink-muted)" font-size="10.8">人眼点开随时查细节，不丢失上下文</text>
+
+              <!-- View C: Stats / Plugin -->
+              <rect x="346" y="228" width="278" height="74" rx="10" fill="var(--surface)" stroke="var(--warm)" stroke-width="1.7" />
+              <text x="362" y="252" fill="var(--warm)" font-size="12.5" font-weight="700">视图 C：统计 / 插件自定义面板</text>
+              <text x="362" y="272" fill="var(--ink)" font-family="JetBrains Mono, monospace" font-size="10.8">apply(state, event) → Todo / Token</text>
+              <text x="362" y="290" fill="var(--ink-muted)" font-size="10.8">纯函数遍历流水，零额外状态表</text>
+
+              <text x="485" y="328" text-anchor="middle" fill="var(--ink-muted)" font-size="11">类比：数据库 CREATE VIEW（不存副本，永不漂移）</text>
+            </svg>
+          </div>
+
+          <div class="content-col">
+            <ul class="bullet-list large-bullets">
+              <li><span class="bullet-dot"></span><strong>大白话类比</strong>：Log 是“银行流水”，Projection 是按需算出的“账单 / 余额 / 报表”</li>
+              <li><span class="bullet-dot"></span><strong>两类事件分流</strong>：带 <code>surfaceOp</code> 的进模型对话；纯日志（流式碎片）只给 UI 与调试</li>
+              <li><span class="bullet-dot"></span><strong>强一致保证</strong>：发给 LLM 的消息严格等于 <code>deriveMessages()</code> 算出的结果</li>
+              <li><span class="bullet-dot"></span><strong>插件可扩展</strong>：写个纯函数 <code>apply(state, event)</code> 就能派生自己的进度 / 统计面板</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 10: SIMPLE 4-STEP FULL FLOW ==================== -->
+    <section class="slide" data-slide="10" data-title="核心全流程：4 步看懂一条指令怎么跑" data-time="15:30 · 1.5 min" data-note="极简 4 步串联前面所有概念：1) 入口进日志；2) Projection 拼上下文调模型；3) 校验参数后经 Seam 调工具；4) 工具结果写回日志，没干完继续下一轮。最后指出外框 Agent Loop 本身是插件——下一页看把它换成 PTC 模式有多爽！">
       <div class="slide-inner">
         <div class="slide-head">
           <h2>核心全流程：4 步看懂一条指令怎么跑完</h2>
@@ -850,7 +909,6 @@ session = client.<span class="tok-fn">create_session</span>()
             <text x="50" y="148" fill="var(--ink-muted)" font-size="13">Web / Headless / SDK 接入</text>
             <text x="50" y="176" fill="var(--emerald)" font-size="13" font-weight="600">→ 追加写入 Session Log</text>
 
-            <!-- Arrow 1->2 -->
             <line x1="252" y1="146" x2="294" y2="146" stroke="var(--accent)" stroke-width="2.4" />
             <polygon points="292,140 304,146 292,152" fill="var(--accent)" />
 
@@ -863,11 +921,10 @@ session = client.<span class="tok-fn">create_session</span>()
             <rect x="330" y="72" width="218" height="148" rx="14" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.8" />
             <circle cx="362" cy="104" r="16" fill="var(--accent)" />
             <text x="362" y="110" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700">2</text>
-            <text x="390" y="110" fill="var(--ink)" font-size="16" font-weight="700">拼上下文调模型</text>
-            <text x="346" y="148" fill="var(--ink-muted)" font-size="13">从 Log 投影出当前对话</text>
+            <text x="390" y="110" fill="var(--ink)" font-size="16" font-weight="700">投影上下文调模型</text>
+            <text x="346" y="148" fill="var(--ink-muted)" font-size="13">Projection 算出 messages[]</text>
             <text x="346" y="176" fill="var(--accent)" font-size="13" font-weight="600">→ 流式调用 LLM 推理</text>
 
-            <!-- Arrow 2->3 -->
             <line x1="548" y1="146" x2="582" y2="146" stroke="var(--accent)" stroke-width="2.4" />
             <polygon points="580,140 592,146 580,152" fill="var(--accent)" />
 
@@ -875,11 +932,10 @@ session = client.<span class="tok-fn">create_session</span>()
             <rect x="594" y="72" width="218" height="148" rx="14" fill="var(--surface)" stroke="var(--warm)" stroke-width="1.8" />
             <circle cx="626" cy="104" r="16" fill="var(--warm)" />
             <text x="626" y="110" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700">3</text>
-            <text x="654" y="110" fill="var(--ink)" font-size="16" font-weight="700">审批并跑工具</text>
-            <text x="610" y="148" fill="var(--ink-muted)" font-size="13">过审批策略（allow/ask）</text>
-            <text x="610" y="176" fill="var(--warm)" font-size="13" font-weight="600">→ 经 Seam 调文件 / 沙箱</text>
+            <text x="654" y="110" fill="var(--ink)" font-size="16" font-weight="700">校验并跑工具</text>
+            <text x="610" y="148" fill="var(--ink-muted)" font-size="13">Schema 入参校验</text>
+            <text x="610" y="176" fill="var(--warm)" font-size="13" font-weight="600">→ 经 Seam 调文件 / 工具</text>
 
-            <!-- Arrow 3->4 -->
             <line x1="812" y1="146" x2="844" y2="146" stroke="var(--accent)" stroke-width="2.4" />
             <polygon points="842,140 854,146 842,152" fill="var(--accent)" />
 
@@ -891,7 +947,6 @@ session = client.<span class="tok-fn">create_session</span>()
             <text x="872" y="148" fill="var(--ink-muted)" font-size="13">工具结果追加进 Log</text>
             <text x="872" y="176" fill="var(--emerald)" font-size="13" font-weight="600">→ 干完输出，没完继续</text>
 
-            <!-- Loopback arrow 4 -> 2 -->
             <path d="M960 220 L960 262 L439 262 L439 228" fill="none" stroke="var(--emerald)" stroke-width="2.2" />
             <polygon points="433,230 439,218 445,230" fill="var(--emerald)" />
             <rect x="618" y="248" width="164" height="26" rx="13" fill="var(--surface)" stroke="var(--emerald)" stroke-width="1.4" />
@@ -900,15 +955,116 @@ session = client.<span class="tok-fn">create_session</span>()
         </div>
 
         <ul class="bullet-list horizontal-bullets">
-          <li><span class="bullet-dot"></span><strong>主干极简</strong>：就是“进日志 → 调模型 → 跑工具 → 记结果”的闭环</li>
-          <li><span class="bullet-dot"></span><strong>Loop 可换</strong>：默认标准循环，也可以换成 PTC 或自定义编排</li>
-          <li><span class="bullet-dot"></span><strong>处处可插</strong>：模型、审批、工具、日志、UI 每一环都是插件</li>
+          <li><span class="bullet-dot"></span><strong>主干极简</strong>：就是“进日志 → 投影调模型 → 跑工具 → 记结果”的闭环</li>
+          <li><span class="bullet-dot"></span><strong>Loop 可换</strong>：默认一步步调工具，也可一键切换成 <strong>PTC 模式</strong>（下一页）</li>
+          <li><span class="bullet-dot"></span><strong>处处可插</strong>：模型、工具、文件服务、日志、UI 每一环都是插件</li>
         </ul>
       </div>
     </section>
 
-    <!-- ==================== SLIDE 10: PLUGIN ANATOMY ==================== -->
-    <section class="slide" data-slide="10" data-title="16 行极简插件骨架" data-time="18:30 · 1 min" data-note="把原理收束到代码：写一个 dsh 插件就做 4 件事——定名字、declare inject 依赖、写配置 Schema、在 apply(ctx) 里注册工具。">
+    <!-- ==================== SLIDE 11: NEW - PTC MODE ==================== -->
+    <section class="slide" data-slide="11" data-title="进阶模式：PTC（代码批量调工具）" data-time="17:00 · 1.5 min" data-note="用一句话讲透 PTC（Programmatic Tool Calling）：传统方式让模型查 10 个文件里的 TODO，要来回跑 10 趟 LLM，还会把整份文件内容全塞进上下文；PTC 模式直接给模型一份 TypeScript 类型定义（.d.ts），模型写 8 行代码一次跑完并过滤，只把 3 行结论带回上下文，又快又省 Token！">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <h2>进阶玩法：PTC 模式——让模型写代码批量调工具</h2>
+        </div>
+
+        <div class="split-2">
+          <!-- Left: Traditional vs PTC visual comparison -->
+          <div class="visual-panel">
+            <svg class="diagram-svg" viewBox="0 0 560 364" role="img" aria-label="传统多轮 Tool Call 与 PTC 代码模式对比图">
+              <!-- Top: Traditional Sequential -->
+              <rect x="8" y="8" width="544" height="148" rx="14" fill="var(--surface-alt)" stroke="var(--border)" stroke-width="1.3" />
+              <text x="26" y="34" fill="var(--warm)" font-size="12.5" font-weight="700">传统模式：一次调 1 个工具，来回跑 N 趟 LLM</text>
+
+              <g font-family="JetBrains Mono, monospace" font-size="10.8">
+                <rect x="26" y="52" width="76" height="44" rx="8" fill="var(--surface)" stroke="var(--border-strong)" />
+                <text x="64" y="78" text-anchor="middle" fill="var(--ink)">LLM #1</text>
+
+                <line x1="102" y1="74" x2="128" y2="74" stroke="var(--warm)" stroke-width="1.8" />
+                <polygon points="126,69 134,74 126,79" fill="var(--warm)" />
+
+                <rect x="136" y="52" width="84" height="44" rx="8" fill="var(--warm-soft)" stroke="var(--warm)" />
+                <text x="178" y="78" text-anchor="middle" fill="var(--warm)">listDir</text>
+
+                <line x1="220" y1="74" x2="246" y2="74" stroke="var(--warm)" stroke-width="1.8" />
+                <polygon points="244,69 252,74 244,79" fill="var(--warm)" />
+
+                <rect x="254" y="52" width="76" height="44" rx="8" fill="var(--surface)" stroke="var(--border-strong)" />
+                <text x="292" y="78" text-anchor="middle" fill="var(--ink)">LLM #2</text>
+
+                <line x1="330" y1="74" x2="356" y2="74" stroke="var(--warm)" stroke-width="1.8" />
+                <polygon points="354,69 362,74 354,79" fill="var(--warm)" />
+
+                <rect x="364" y="52" width="86" height="44" rx="8" fill="var(--warm-soft)" stroke="var(--warm)" />
+                <text x="407" y="78" text-anchor="middle" fill="var(--warm)">readFile×N</text>
+
+                <line x1="450" y1="74" x2="474" y2="74" stroke="var(--warm)" stroke-width="1.8" />
+                <polygon points="472,69 480,74 472,79" fill="var(--warm)" />
+
+                <text x="512" y="79" text-anchor="middle" fill="var(--warm)" font-weight="700">LLM #N</text>
+              </g>
+              <text x="26" y="132" fill="var(--ink-muted)" font-size="12">痛点：串行往返延迟高 + 中间几千行原始文件全塞进上下文烧 Token</text>
+
+              <!-- Bottom: PTC Mode -->
+              <rect x="8" y="176" width="544" height="180" rx="14" fill="var(--surface-alt)" stroke="var(--emerald)" stroke-width="1.6" />
+              <text x="26" y="204" fill="var(--emerald)" font-size="12.5" font-weight="700">PTC 模式（Programmatic Tool Calling）：1 趟写脚本批量跑完</text>
+
+              <rect x="26" y="222" width="122" height="82" rx="10" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.6" />
+              <text x="87" y="250" text-anchor="middle" fill="var(--accent)" font-size="12.5" font-weight="700">LLM（1 轮）</text>
+              <text x="87" y="272" text-anchor="middle" fill="var(--ink-muted)" font-size="10.8">读工具 .d.ts</text>
+              <text x="87" y="290" text-anchor="middle" fill="var(--ink)" font-family="JetBrains Mono, monospace" font-size="10.8">输出 run_code</text>
+
+              <line x1="148" y1="263" x2="180" y2="263" stroke="var(--emerald)" stroke-width="2" />
+              <polygon points="178,258 188,263 178,268" fill="var(--emerald)" />
+
+              <rect x="190" y="222" width="212" height="82" rx="10" fill="var(--emerald-soft)" stroke="var(--emerald)" stroke-width="1.6" />
+              <text x="296" y="248" text-anchor="middle" fill="var(--emerald)" font-size="12.5" font-weight="700">PTC 运行时沙箱</text>
+              <text x="296" y="270" text-anchor="middle" fill="var(--ink)" font-size="11">循环 / 分支 / Promise.all 并行</text>
+              <text x="296" y="290" text-anchor="middle" fill="var(--ink-muted)" font-size="10.8">中间脏数据留沙箱 · 限并发防死循环</text>
+
+              <line x1="402" y1="263" x2="432" y2="263" stroke="var(--emerald)" stroke-width="2" />
+              <polygon points="430,258 440,263 430,268" fill="var(--emerald)" />
+
+              <rect x="442" y="222" width="94" height="82" rx="10" fill="var(--surface)" stroke="var(--emerald)" stroke-width="1.6" />
+              <text x="489" y="254" text-anchor="middle" fill="var(--emerald)" font-size="12.5" font-weight="700">精简结果</text>
+              <text x="489" y="278" text-anchor="middle" fill="var(--ink-muted)" font-size="11">只回传 3 行</text>
+
+              <text x="26" y="336" fill="var(--emerald)" font-size="12" font-weight="700">收益：5~10 轮压缩成 1 轮 · 速度翻倍 · 上下文极度干净</text>
+            </svg>
+          </div>
+
+          <!-- Right: Code example + 4 crisp bullets -->
+          <div class="content-col">
+            <div class="code-window">
+              <div class="code-header">
+                <span class="code-file">模型一次生成的 run_code（沙箱执行）</span>
+                <span class="code-lang">TypeScript</span>
+              </div>
+              <pre class="code-body code-snug"><code><span class="tok-cm">// 例：扫描 src/ 下所有含 TODO 的文件，只返回命中列表</span>
+<span class="tok-kw">const</span> files = <span class="tok-kw">await</span> fs.<span class="tok-fn">listDir</span>(<span class="tok-str">'src/'</span>)
+<span class="tok-kw">const</span> hits = <span class="tok-kw">await</span> Promise.<span class="tok-fn">all</span>(
+  files.<span class="tok-fn">filter</span>(f =&gt; f.<span class="tok-fn">endsWith</span>(<span class="tok-str">'.ts'</span>)).<span class="tok-fn">map</span>(<span class="tok-kw">async</span> (f) =&gt; {
+    <span class="tok-kw">const</span> txt = <span class="tok-kw">await</span> fs.<span class="tok-fn">readFile</span>(f)
+    <span class="tok-kw">return</span> txt.<span class="tok-fn">includes</span>(<span class="tok-str">'TODO'</span>) ? f : <span class="tok-kw">null</span>
+  })
+)
+<span class="tok-kw">return</span> hits.<span class="tok-fn">filter</span>(Boolean) <span class="tok-cm">// 只把结果返回上下文</span></code></pre>
+            </div>
+
+            <ul class="bullet-list compact-bullets">
+              <li><span class="bullet-dot"></span><strong>工具变 SDK</strong>：把工具生成 <code>.d.ts</code> 声明注入给模型，直接写 TS 调用</li>
+              <li><span class="bullet-dot"></span><strong>省时省 Token</strong>：海量中间结果留在沙箱过滤，只带精简结论回来</li>
+              <li><span class="bullet-dot"></span><strong>安全可控</strong>：<code>dsh-tool-executor-ptc</code> 内置并发数、频率上限与超时熔断</li>
+              <li><span class="bullet-dot"></span><strong>无缝切换</strong>：靠前面讲的插件架构，换掉执行器插件即可开启 PTC</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 12: PLUGIN ANATOMY ==================== -->
+    <section class="slide" data-slide="12" data-title="16 行极简插件骨架" data-time="18:30 · 1 min" data-note="把原理收束到代码：写一个 dsh 插件就做 4 件事——定名字、声明 inject 依赖、写配置 Schema、在 apply(ctx) 里注册工具。">
       <div class="slide-inner">
         <div class="slide-head">
           <h2>落到代码：写一个 dsh 插件长什么样？</h2>
@@ -958,8 +1114,8 @@ session = client.<span class="tok-fn">create_session</span>()
       </div>
     </section>
 
-    <!-- ==================== SLIDE 11: TRANSITION TO DEMO ==================== -->
-    <section class="slide" data-slide="11" data-title="切入实战：插件 Demo 展示" data-time="19:30 · 20 min Demo" data-note="转场进 Demo：前面 20 分钟我们把概念、patch 用法、三大原理和 4 步主流程都过完了，接下来 20 分钟不看 PPT 了，直接切屏看我开发的几个插件 Demo！">
+    <!-- ==================== SLIDE 13: TRANSITION TO DEMO ==================== -->
+    <section class="slide" data-slide="13" data-title="切入实战：插件 Demo 展示" data-time="19:30 · 20 min Demo" data-note="转场进 Demo：前面 20 分钟我们把概念、Patch、3 种用法、三大原理（DI+effect、Seam 重写、Log+Projection）、4 步流程和 PTC 都过完了，接下来 20 分钟不看 PPT，直接切屏看我开发的插件 Demo！">
       <div class="slide-inner bridge-layout">
         <div class="bridge-main">
           <h2 class="display-title bridge-title">Talk is cheap,<br />show me the plugins.</h2>
@@ -970,8 +1126,8 @@ session = client.<span class="tok-fn">create_session</span>()
           <h3>看 Demo 时的 3 个观察点</h3>
           <ul class="bullet-list large-bullets">
             <li><span class="bullet-dot"></span><strong>挂载方式</strong>：怎么通过 <code>cordis.patch.yml</code> 装进来的？</li>
-            <li><span class="bullet-dot"></span><strong>依赖与接缝</strong>：注入了哪些服务、注册了什么工具或重写？</li>
-            <li><span class="bullet-dot"></span><strong>热插拔体验</strong>：运行时开启 / 关闭如何做到干净无副作用？</li>
+            <li><span class="bullet-dot"></span><strong>依赖与扩展</strong>：注入了哪些服务、注册了什么工具或重写？</li>
+            <li><span class="bullet-dot"></span><strong>热插拔体验</strong>：运行时开启 / 关闭如何做到干净无残留？</li>
           </ul>
           <div class="bridge-actions">
             <button type="button" class="primary-btn" id="openQaFromLast">查看高频 Q&amp;A 速查 (Q)</button>
@@ -997,7 +1153,7 @@ session = client.<span class="tok-fn">create_session</span>()
       <button type="button" class="nav-btn" id="prevBtn" aria-label="上一页">
         <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4.5 6.5 9l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
       </button>
-      <span class="slide-counter tabular" id="slideCounter">01 / 11</span>
+      <span class="slide-counter tabular" id="slideCounter">01 / 13</span>
       <button type="button" class="nav-btn" id="nextBtn" aria-label="下一页">
         <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4.5 11.5 9 7 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
       </button>
@@ -1037,19 +1193,19 @@ session = client.<span class="tok-fn">create_session</span>()
       </div>
       <dl class="qa-list">
         <dt>1. 这跟 MCP 有什么区别？</dt>
-        <dd>层级不同、完全互补。MCP 是“USB 外设协议”，只管接入外部工具/数据；dsh 是“微内核主板”，MCP 只是 dsh 里可接入的一类插件，dsh 还管 Loop、Session 压缩、审批、文件/沙箱和 UI。</dd>
+        <dd>层级不同、完全互补。MCP 是“USB 外设协议”，只管接入外部工具/数据；dsh 是“微内核主板”，MCP 只是 dsh 里可接入的一类插件，dsh 还管 Loop（含 PTC）、Session 日志与投影、文件/沙箱服务和 UI。</dd>
         <dt>2. 跟 Claude Code / LangGraph 怎么选？</dt>
-        <dd>Claude Code 是开箱即用的精装成品；LangGraph 偏有向图工作流编排；dsh 主打“可深度二次开发、热插拔组合的 Agent 底盘”，适合内网沙箱、重写内置服务和团队插件沉淀。</dd>
+        <dd>Claude Code 是开箱即用的精装成品；LangGraph 偏有向图工作流编排；dsh 主打“可深度二次开发、热插拔组合的 Agent 底盘”，适合重写内置服务、切换 PTC 模式和团队插件沉淀。</dd>
         <dt>3. 全插件化会不会难 Debug？</dt>
         <dd>三板斧定位：① <code>dsh --dump-config</code> 一键看 Patch 后的完整配置；② <code>inject</code> 显式声明依赖，缺失服务启动即报错；③ Append-Only Session Log 完整记录每步事件，随时回放。</dd>
         <dt>4. 影子压缩会丢上下文吗？</dt>
-        <dd>压缩摘要本身有损，但底层原始事件从未物理删除，审计、调试和回查原始片段都 100% 保留。</dd>
+        <dd>压缩摘要本身有损，但底层原始事件从未物理删除，UI 展开查看或按需回查原始片段都 100% 保留。</dd>
         <dt>5. 只能用 DeepSeek 模型吗？</dt>
         <dd>完全模型无关（Model-Agnostic），模型路由本身也是插件，支持 DeepSeek 原生以及 OpenAI / Anthropic 兼容端点。</dd>
       </dl>
     </div>
   </div>
 
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
